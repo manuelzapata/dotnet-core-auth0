@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
+import { Header } from 'semantic-ui-react';
+
 class App extends Component {
 
   isAuthResponse() {
@@ -16,14 +18,10 @@ class App extends Component {
     if(this.isAuthResponse() || authService.isAuthenticated()) {
 
       return (
-        <div className="App">
-          <header className="App-header">
-            <h1 className="App-title">Communities</h1>
-          </header>
-          <div>
+          <div className="container">
+            <Header as="h1">List of Communities</Header>
             {children}
           </div>
-        </div>
       );
 
     } 

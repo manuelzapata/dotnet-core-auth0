@@ -1,5 +1,8 @@
 import React from 'react';
+import { Card, Button } from 'semantic-ui-react';
 import CommunityService from '../common/communityService';
+
+
 
 export default class CommunityList extends React.Component {
 
@@ -27,19 +30,35 @@ export default class CommunityList extends React.Component {
         if(this.state.communities.length > 0) {
 
             const communityItems = this.state.communities.map(community => (
-                <li key={community.communityId}>
-                    <a href={community.url} target="_blank">{community.name}</a>
-                </li>
+                <Card key={community.communityId}>
+                    <Card.Content>
+                        <Card.Header>{community.name}</Card.Header>
+                        <Card.Meta>Meetup</Card.Meta>
+                        <Card.Description>
+                            Awesome meetup.
+                        </Card.Description>
+                    </Card.Content>
+                    <Card.Content extra>
+                        <div>
+                            <Button basic color='green' onClick={() => {
+                                window.open(community.url, '_blank');
+                            }}>
+                                View page
+                            </Button>
+                        </div>
+                    </Card.Content>
+                </Card>
+
             ));
 
-            communitiesControl = (<ul>{communityItems}</ul>);
+            communitiesControl = (<Card.Group>{communityItems}</Card.Group>);
         }
 
         
         return (
             <div>
-                <button onClick={this.handleClick}>Get communities</button>
-                <div>
+                <Button primary onClick={this.handleClick}>Get communities</Button>
+                <div className="community-container">
                     {communitiesControl}
                 </div>
             </div>
