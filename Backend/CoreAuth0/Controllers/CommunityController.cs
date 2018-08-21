@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CoreAuth0.Entities;
 using CoreAuth0.Repositories;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoreAuth0.Controllers
@@ -20,6 +20,8 @@ namespace CoreAuth0.Controllers
         }
 
         [HttpGet]
+        //[Authorize("read:communities")]
+        [Authorize]
         public IEnumerable<Community> Get() {
 
             var communities = communityRepository.GetAll();
