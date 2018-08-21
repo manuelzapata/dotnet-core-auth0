@@ -20,8 +20,7 @@ namespace CoreAuth0.Controllers
         }
 
         [HttpGet]
-        //[Authorize("read:communities")]
-        [Authorize]
+        [Authorize("read:communities")]
         public IEnumerable<Community> Get() {
 
             var communities = communityRepository.GetAll();

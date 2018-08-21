@@ -4,7 +4,6 @@ import { withRouter } from 'react-router-dom';
 class AuthenticationCallback extends React.Component {
 
     redirect() {
-        debugger;
         const { authService } = this.props;
         let redirectURL = authService.getRedirectURI();
 
@@ -15,7 +14,6 @@ class AuthenticationCallback extends React.Component {
     }
 
     componentDidMount() {
-        debugger;
         const { location, authService } = this.props;
 
         if(/access_token|id_token|error/.test(location.hash)) {
